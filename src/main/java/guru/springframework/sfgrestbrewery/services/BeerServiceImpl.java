@@ -48,7 +48,7 @@ public class BeerServiceImpl implements BeerService {
             beerPage = beerRepository.findAll(pageRequest);
         }
 
-        if (showInventoryOnHand){
+        if (showInventoryOnHand) {
             beerPagedList = new BeerPagedList(beerPage
                     .getContent()
                     .stream()
@@ -97,7 +97,7 @@ public class BeerServiceImpl implements BeerService {
         Beer beer = beerRepository.findById(beerId).orElseThrow(NotFoundException::new);
 
         beer.setBeerName(beerDto.getBeerName());
-        beer.setBeerStyle(BeerStyleEnum.PILSNER.valueOf(beerDto.getBeerStyle()));
+        beer.setBeerStyle(BeerStyleEnum.valueOf(beerDto.getBeerStyle()));
         beer.setPrice(beerDto.getPrice());
         beer.setUpc(beerDto.getUpc());
 
